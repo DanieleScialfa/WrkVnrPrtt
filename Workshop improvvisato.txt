@@ -1,0 +1,76 @@
+Workshop improvvisato
+
+----------------------
+
+Total time: 1h 30m
+
+Problem: We have more data and want read with new method. (It's not real problem but for us maybe yes.)
+Data Lake: We can use https://www.istat.it/it/dati-analisi-e-prodotti/statistiche-a-z:-parole-chiave but is more funny create data.
+Tools: Node-red , Neo4j
+Chyper: https://neo4j.com/docs/cypher-manual/current/
+
+----------------------
+
+STEP 1 -->  (10 minutes)
+
+choose together the source of data on istat.it .
+
+----------------------
+
+STEP 2 -->  (30 minutes)
+
+Create a programm with node-red that create data.
+
+
+HOW START DOCKER NODE-RED ?
+
+What is ? It is a program of IBM for Iot.
+
+simple use this command
+----
+
+docker run -it -p 1880:1880 -v node_red_data:/data --name mynodered nodered/node-red
+
+----
+Use this for create data lake and work after on it.
+
+
+Install this from palette : https://flows.nodered.org/node/node-red-contrib-nulli-neo4j
+For communication with DB, create, query etc.
+
+
+You can read a source like istat.it and format data for neo4j.
+
+----------------------
+
+STEP 3 -->   (50 minutes)
+
+Read data with the graph data.
+
+HOW START DOCKER NEO-4j
+
+What is ? It is a graph database of IBM.
+
+simple use this command
+----
+normal  -->
+
+docker run \
+    --publish=7474:7474 --publish=7687:7687 \
+    --volume=$HOME/neo4j/data:/data \
+    --volume=$HOME/neo4j/logs:/logs \
+    neo4j:latest
+
+enterprise -->
+
+docker run \
+    --publish=7474:7474 --publish=7687:7687 \
+    --env=NEO4J_ACCEPT_LICENSE_AGREEMENT=yes \
+    --volume=$HOME/neo4j/data:/data \
+    --volume=$HOME/neo4j/logs:/logs \
+    neo4j:enterprise
+
+----
+Use this for read the data, use the Chyper descripting language.
+
+Chyper: https://neo4j.com/docs/cypher-manual/current/
